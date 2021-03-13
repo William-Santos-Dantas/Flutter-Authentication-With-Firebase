@@ -1,3 +1,6 @@
+import 'package:authentication_firebase/service/authentication_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 import '../components/bottom_text.dart';
 import '../components/entry_field.dart';
 import '../components/submitButton.dart';
@@ -10,9 +13,31 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _obscureText = true;
-
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    checklogin();
+  }
+
+  void checklogin() async {
+    final firebaseUser = context.watch<User>();
+    if (firebaseUser != null) {
+      Navigator.pushReplacementNamed(context, '/homeScreen');
+    }
+  }
+
+  void login() {
+    context
+        .read<AuthenticationService>()
+        .signIn(
+          email: _email.text.trim(),
+          password: _password.text.trim(),
+        )
+        .then((value) => print(value));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +52,13 @@ class _LoginPageState extends State<LoginPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               loginInput(),
-              SubmitButton('Login', '/'),
+              SubmitButton('Login', login),
               forgotPassword(),
               BottomText('Ainda não possui uma conta? Cadastre-se', '/'),
             ],
@@ -59,8 +84,6 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
-
 
   Widget forgotPassword() {
     return Container(

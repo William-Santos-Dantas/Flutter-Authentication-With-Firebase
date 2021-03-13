@@ -1,3 +1,6 @@
+import 'package:authentication_firebase/service/authentication_service.dart';
+
+import 'package:provider/provider.dart';
 import '../components/entry_field.dart';
 import '../components/submitButton.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +11,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  bool _obscureText = true;
 
   TextEditingController _name = TextEditingController();
   TextEditingController _email = TextEditingController();
@@ -19,6 +21,13 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       body: bodyPage(),
     );
+  }
+
+  void register() {
+    context.read<AuthenticationService>().signUp(
+          email: _email.text.trim(),
+          password: _password.text.trim(),
+        );
   }
 
   Widget bodyPage() {
@@ -33,7 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               registerInput(),
-              SubmitButton('Register', '/'),
+              SubmitButton('Register', register),
             ],
           ),
         ),
@@ -49,9 +58,9 @@ class _RegisterPageState extends State<RegisterPage> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              EntryField(_name, 'Name'),
+              //EntryField(_name, 'Name'),
               EntryField(_email, 'Email'),
-              EntryField(_password, 'password', isPassword: _obscureText),
+              EntryField(_password, 'password', isPassword: true),
             ],
           ),
         ],

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "186831113079",
+    "project_id": "authentication-e9f3c",
+    "storage_bucket": "authentication-e9f3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186831113079:android:52e4ecc3c9b1082c70af72",
+        "android_client_info": {
+          "package_name": "nidrah.authentication_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186831113079-mtkr33b5d7s1ruh3nstbt4cjj1u32f12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl8m675jrcGCe_y85EhbbyC16eCMj-5As"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186831113079-mtkr33b5d7s1ruh3nstbt4cjj1u32f12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

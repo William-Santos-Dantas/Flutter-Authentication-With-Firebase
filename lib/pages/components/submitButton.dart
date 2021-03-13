@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class SubmitButton extends StatefulWidget {
   final text;
-  final navigator;
+  final login;
 
-  const SubmitButton(this.text, this.navigator);
+  const SubmitButton(this.text, this.login);
 
   @override
   _SubmitButtonState createState() => _SubmitButtonState();
@@ -21,7 +21,7 @@ class _SubmitButtonState extends State<SubmitButton> {
         color: Colors.white,
       ),
       child: TextButton(
-        onPressed: () => widget.navigator(),
+        onPressed: () => widget.login(),
         child: Text(
           widget.text.toUpperCase(),
           style: TextStyle(fontSize: 20.0, color: Colors.deepPurple[400]),

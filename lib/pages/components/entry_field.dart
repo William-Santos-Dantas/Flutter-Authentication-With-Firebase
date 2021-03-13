@@ -33,6 +33,7 @@ class _EntryFieldState extends State<EntryField> {
         Container(
           margin: EdgeInsets.only(top: 10, left: 10, right: 10),
           child: TextField(
+            controller: widget.controller,
             obscureText: widget.isPassword ? _obscureText : false,
             decoration: InputDecoration(
               suffixIcon: widget.isPassword
